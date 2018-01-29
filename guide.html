@@ -1,0 +1,457 @@
+<div id="adjmail" class="page-layout carded left-sidenav" layout="row" ng-switch="vm.appInnerState">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg md-accent-bg"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <div class="center pos-rel ml-0 mr-0" layout="column" flex>
+      <!-- CONTENT HEADER- V NAV-->
+      <!--<div layout="column" layout-align="start start">-->
+          <!--<div class="v-header" layout="row" flex fill-width>-->
+              <!--<div class="title" layout="column" layout-align="center start">-->
+                  <!--<div class="logo" layout="row" layout-align="start center">-->
+                        <!--<span class="logo-icon">-->
+                          <!--<img src="app/core/app_icons/guide_app_icon.png" alt=""/>-->
+                        <!--</span>-->
+                      <!--<span class="logo-text">Setup guide</span>-->
+                  <!--</div>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;<div class="search-wrapper md-whiteframe-4dp animate-fade-in-out" layout="row" layout-align="start center" flex="50" ng-if="vm.activePlanPaneIndex == 0">&ndash;&gt;-->
+                  <!--&lt;!&ndash;<md-button class="md-icon-button sidenav-toggle" ng-click="vm.toggleSidenav('main-sidenav')" hide-gt-md>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<md-icon class="icon" md-font-icon="icon-menu"></md-icon>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+
+                  <!--&lt;!&ndash;<div class="search" flex layout="row" layout-align="start center">&ndash;&gt;-->
+                      <!--&lt;!&ndash;<md-icon md-font-icon="icon-magnify" class="icon s24"></md-icon>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<input flex ng-model="vm.search" type="text" ng-keypress="searchKeyPress($event,vm.search,vm.search.length)" ng-change="loadByKeywordPlan(vm.search,3)" placeholder="Search for Plans">&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--<div flex></div>-->
+              <!--&lt;!&ndash;<md-button class="md-raised main-app-create" layout="row" layout-align="center center" ng-disabled="vm.activePlanPaneIndex == 1" ng-click="toggleEdit()" ng-if="!inpageReadPaneEdit"><span class="fs-18 mr-10 fc-accent">+</span> NEW&ndash;&gt;-->
+              <!--&lt;!&ndash;</md-button>&ndash;&gt;-->
+          <!--</div>-->
+          <!--&lt;!&ndash;<div class="v-nav">&ndash;&gt;-->
+          <!--&lt;!&ndash;<div ng-include="'app/main/plans/sidenavs/main/main-sidenav.html'"></div>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+      <!--</div>-->
+      <!-- / CONTENT HEADER -->
+    <!-- CONTENT CARD -->
+    <div class="content-card mt-45" layout="column" flex>
+        <div class="content-wrapper" layout="column" flex ms-scroll id="guideScrollContent">
+            <div>
+                <div class="pl-16 pr-16 pt-16 pb-60" style="background: #fafafa;z-index: 10" md-whiteframe="1dp">
+                    <div class="text-center header-boss">
+                        <div class="header-icon-boss">
+                            <!--<i class="material-icons">explore</i>-->
+                            <img src="assets/images/logos/cc-cygil.png" alt="Welcome to CloudCharge">
+                        </div>
+                        <div class="header-text-boss">Welcome to CloudCharge!</div>
+                    </div>
+                    <!--<md-divider class="mt-10"></md-divider>-->
+                    <div class="text-center mt-30">
+                        <p>Following steps take you through the path of setting up & getting started CloudCharge. </br> Complete all the tasks of a step to get to the next.</p>
+                    </div>
+                </div>
+                <md-divider class="op-5"></md-divider>
+
+                <!--Vertical panels block-->
+                <!--<div class="guide-step-wrap">-->
+                <!--<div class="step-header" layout="row" layout-align="start center" md-whiteframe="1dp" ng-click="openSelectedGuidePanel(0)">-->
+                <!--<span class="step-circle">1</span>-->
+                <!--<span class="step-title" layout="column" layout-align="center start">-->
+                <!--<label>Step 1</label>-->
+                <!--<span>Define plans</span>-->
+                <!--</span>-->
+                <!--<span flex></span>-->
+                <!--<md-button class="md-icon-button">-->
+                <!--<md-icon md-font-icon="icon-chevron-down"></md-icon>-->
+                <!--</md-button>-->
+                <!--</div>-->
+                <!--<div class="step-body">-->
+                <!--<ul>-->
+                <!--<li>Go to <a href="#/plans">Plans</a> app.</li>-->
+                <!--<li>Click on <b>NEW</b> button on top-right corner.-->
+                <!--<div>-->
+                <!--<img src="assets/images/Setup guide/new_button.jpg" alt="New">-->
+                <!--</div>-->
+                <!--</li>-->
+
+                <!--<li>Create a plan.</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!-- / Vertical panels block-->
+
+                <div class="guide-step-wrap">
+                    <div class="step-header " layout="row" layout-align="center center" style="margin-top: -30px;z-index: 10;position:relative">
+                        <div layout="column" layout-align="center center" flex class="step-row" ng-class="{'selected':selectedGuidePanel==0}">
+                            <span class="step-title" layout="column" layout-align="center start">
+                                <!--<label>Step 1</label>-->
+                                <span>Set general details</span>
+                            </span>
+                            <button class="step-circle" ng-click="openSelectedGuidePanel(0, 0)" ng-class="{'done':isPanel0Active}" md-whiteframe="2dp">
+                                <span ng-if="!isPanel0Active">●</span>
+                                <span ng-if="isPanel0Active"><md-icon md-font-icon="icon-check"></md-icon> </span>
+                            </button>
+                        </div>
+                        <div layout="column" layout-align="center center" flex class="step-row" ng-class="{'disabled':!isPanel0Active,'selected':selectedGuidePanel==1}">
+                            <span class="step-title" layout="column" layout-align="center start">
+                                <!--<label>Step 2</label>-->
+                                <span>{{accCat == 'invoice' ? 'Create product' : 'Define plans'}}</span>
+                            </span>
+                            <button class="step-circle" ng-click="openSelectedGuidePanel(1, 1)" ng-disabled="!isPanel0Active" ng-class="{'done':isPanel1Active}" md-whiteframe="2dp">
+                                <span ng-if="!isPanel1Active">●</span>
+                                <span ng-if="isPanel1Active"><md-icon md-font-icon="icon-check"></md-icon> </span>
+                            </button>
+                        </div>
+                        <div layout="column" layout-align="center center" flex class="step-row" ng-class="{'disabled':!isPanel1Active || !isPanel0Active,'selected':selectedGuidePanel==2}">
+                            <span class="step-title" layout="column" layout-align="center start">
+                                <!--<label>Step 3</label>-->
+                                <span>Payment gateway</span>
+                            </span>
+                            <button class="step-circle" ng-click="openSelectedGuidePanel(2, 2)" ng-disabled="!isPanel1Active || !isPanel0Active"  ng-class="{'done':isPanel2Active}" md-whiteframe="2dp">
+                                <span ng-if="!isPanel2Active">●</span>
+                                <span ng-if="isPanel2Active"><md-icon md-font-icon="icon-check"></md-icon> </span>
+                            </button>
+                        </div>
+                        <div layout="column" layout-align="center center" flex class="step-row" ng-class="{'disabled':!isPanel2Active,'selected':selectedGuidePanel==3}">
+                            <span class="step-title" layout="column" layout-align="center start">
+                                <!--<label>Step 4</label>-->
+                                <span>Try it out</span>
+                            </span>
+                            <button class="step-circle" ng-click="openSelectedGuidePanel(3)" ng-disabled="!isPanel2Active" ng-class="{'done':isPanel3Active}" md-whiteframe="2dp">
+                                <span ng-if="!isPanel3Active">●</span>
+                                <span ng-if="isPanel3Active"><md-icon md-font-icon="icon-check"></md-icon> </span>
+                            </button>
+                        </div>
+                        <div layout="column" layout-align="center center" flex class="step-row" ng-class="{'disabled':!isPanel2Active,'selected':selectedGuidePanel==4}">
+                            <span class="step-title" layout="column" layout-align="center start">
+                                <!--<label>Step 5</label>-->
+                                <span>Go live!</span>
+                            </span>
+                            <button class="step-circle" ng-click="openSelectedGuidePanel(4)" ng-disabled="!isPanel2Active" ng-class="{'done':isPanel4Active}" md-whiteframe="2dp">
+                                <span ng-if="!isPanel4Active">●</span>
+                                <span ng-if="isPanel4Active"><md-icon md-font-icon="icon-check"></md-icon> </span>
+                            </button>
+                        </div>
+                        <!--<div layout="row" class="step-row" ng-class="{'disabled':!isPanel2Active,'selected':selectedGuidePanel==5}" ng-if="extensionMode != 'live'">-->
+                            <!--<button class="step-circle"  ng-click="openSelectedGuidePanel(5)" ng-disabled="!isPanel2Active" ng-class="{'done':isPanel5Active}">-->
+                                <!--<span ng-if="!isPanel5Active">6</span>-->
+                                <!--<span ng-if="isPanel5Active"><md-icon md-font-icon="icon-check"></md-icon> </span>-->
+                            <!--</button>-->
+                            <!--<span class="step-title" layout="column" layout-align="center start">-->
+                                <!--<label>Step 6</label>-->
+                                <!--<span>Go live!</span>-->
+                            <!--</span>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="step-body">
+                        <div class="preloader" ng-if="!svgset">
+                            <md-progress-circular></md-progress-circular>
+                        </div>
+                        <div ng-show="selectedGuidePanel == 0" layout="row" layout-align="center center">
+                            <div flex="10"></div>
+                            <div flex="30">
+                                <ul>
+                                    <li>Go to <a href="#/settings">Settings</a> app.</li>
+                                    <li>Select <b>General</b> tab.</li>
+                                    <li>Find <b>Currency</b> in the <b>General details</b> section.</li>
+                                    <li>Type in any preferred currency in the input field and select the matching result from the drop down.</li>
+                                    <li>Add your company details in <b>Document format</b> section</li>
+                                    <li>Save.</li>
+                                </ul>
+                            </div>
+                            <div flex layout="row" layout-align="center center">
+                                <!--<img src="assets/images/Setup guide/settings_base_currency_1.jpg" alt="General" flex>-->
+                                <!--<div class="w-40 text-center">-->
+                                    <!--<md-icon md-font-icon="icon-chevron-right"></md-icon>-->
+                                <!--</div>-->
+                                <!--<img src="assets/images/Setup guide/settings_base_currency_3.jpg" alt="General" flex>-->
+                                <!--<div class="w-40 text-center">-->
+                                    <!--<md-icon md-font-icon="icon-chevron-right"></md-icon>-->
+                                <!--</div>-->
+                                <!--<img src="assets/images/Setup guide/settings_base_currency_4.jpg" alt="General" flex>-->
+                                <!--<div class="w-10"></div>-->
+                                <!--<img src="assets/images/Setup guide/settings_doc_format.jpg" alt="General" flex>-->
+                                <div id="container0" style="width: 400px!important;height: 250px!important"></div>
+                            </div>
+                        </div>
+                        <div ng-show="selectedGuidePanel == 1" layout="row" layout-align="center center">
+                            <div flex="10"></div>
+                            <div flex="30">
+                                <ul>
+                                    <li>Go to <a href="#/plans">{{accCat == 'invoice' ? 'Product' : 'Plans'}}</a> app.</li>
+                                    <li>Click on <b>NEW</b> button.</li>
+                                    <li>Create a {{accCat == 'invoice' ? 'product' : 'plan'}} and <b>Save</b></li>
+                                </ul>
+                            </div>
+                            <div flex layout="row" layout-align="center center">
+                                <!--<img src="assets/images/Setup guide/new_button.jpg" alt="General">-->
+                                <!--<div class="w-40 text-center">-->
+                                    <!--<md-icon md-font-icon="icon-chevron-right"></md-icon>-->
+                                <!--</div>-->
+                                <!--<img src="assets/images/Setup guide/create_plan.jpg" alt="General">-->
+                                <div id="container1" style="width: 400px!important;height: 250px!important"></div>
+                            </div>
+                        </div>
+                        <!--<div ng-if="selectedGuidePanel == 2" layout="row">-->
+                            <!--<div flex="30">-->
+                                <!--<ul>-->
+                                    <!--<li>Go to <a href="#/settings">Settings</a> app.</li>-->
+                                    <!--<li>Select <b>General</b> tab.</li>-->
+                                    <!--<li>Get to <b>Document format</b> section.</li>-->
+                                    <!--<li>Enter company details and save.</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div flex>-->
+                                <!--<div flex layout="row" layout-align="start center">-->
+                                    <!--<img src="assets/images/Setup guide/settings_general.jpg" alt="General">-->
+                                    <!--<div class="w-40 text-center">-->
+                                        <!--<md-icon md-font-icon="icon-chevron-right"></md-icon>-->
+                                    <!--</div>-->
+                                    <!--<img src="assets/images/Setup guide/settings_doc_format.jpg" alt="General">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div ng-show="selectedGuidePanel == 2" layout="row" layout-align="center center">
+                            <div flex="10"></div>
+                            <div flex="30">
+                                <ul>
+                                    <li>Go to <a href="#/settings">Settings</a> app.</li>
+                                    <li>Select <b>Payment gateways</b> tab.</li>
+                                    <li>Click on the <b>Menu</b> button of a preferred third-party payment partner.</li>
+                                    <li>Select <b>Register</b> and go through the registration process.</li>
+                                </ul>
+                            </div>
+                            <div flex layout="row" layout-align="center center">
+                                <!--<img src="assets/images/Setup guide/settings_payment_gateway.jpg" alt="General">-->
+                                <!--<div class="w-40 text-center"><md-icon md-font-icon="icon-chevron-right"></md-icon></div>-->
+                                <!--<img src="assets/images/Setup guide/settings_payment_gateway_menu.jpg" alt="General">-->
+                                <!--<div class="w-40 text-center"><md-icon md-font-icon="icon-chevron-right"></md-icon></div>-->
+                                <!--<img src="assets/images/Setup guide/settings_payment_gateway_reg.jpg" alt="General">-->
+                                <div id="container2" style="width: 400px!important;height: 250px!important"></div>
+                            </div>
+                        </div>
+                        <div ng-show="selectedGuidePanel == 3" class="ph-16">
+                            <div layout="row">
+                                <div flex="40" ng-if="accCat == 'subscription'">Use the <b>Subscription <a href="#/api">API</a></b> to try out a subscription from the information you added in previous steps.</div>
+                                <div flex="40" ng-if="accCat == 'invoice'">Use the <b>Invoice <a href="#/api">API</a></b> to try out creating an invoice.</div>
+                                <div class="w-20"></div>
+                                <div class="guide-api-wrap" flex md-whiteframe="2dp">
+                                    <div class="api-header">
+                                        <div><span>POST</span> <span>/{{accCat == 'invoice' ? 'createInvoice' : 'addSubscription'}}</span></div>
+                                    </div>
+                                    <div class="api-body" layout="row">
+                                        <div flex>
+                                            <div class="op-5 mb-10"><b>Parameters</b></div>
+                                            <div>
+                                                <div class="mb-5">
+                                                    <div><b>Name : </b></div>
+                                                    <div class="pl-10">{{accCat == 'invoice' ? 'addInvoicerequest' : 'addSubscriptionrequest'}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div flex="30">
+                                            <div class="op-5 mb-5"><b>Example value</b></div>
+                                            <div class="api-sample" ng-if="accCat == 'subscription'">{
+    "email":"string",
+    "planCode":"string",
+    "note":"string",
+    "startDate":"string"
+}</div>
+                                            <div class="api-sample" ng-if="accCat == 'invoice'">{
+    "email": "",
+    "products": [],
+    "note": "",
+    "startDate": "",
+    "invoiceType": "",
+    "invoicePeriod": "",
+    "invoiceInterval": 0,
+    "occurrence": 0,
+    "payMethod": "",
+    "otherDisc": 0,
+    "miscCharges": 0
+}</div>
+                                        </div>
+                                    </div>
+                                    <div class="api-footer" layout="row" layout-align="end center">
+                                        <!--<div class="op-5"><b>Response : </b></div>-->
+                                        <a md-ink-ripple class="h-25 m-0" href="#/api" ng-click="activateTIOPanel()">Try it out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="selectedGuidePanel == 4">
+                            <!--<div class="vertical-panels">-->
+                            <!--<div class="panel">-->
+                            <!--<div class="panel-header" layout="row" layout-align="space-between center">-->
+                            <!--&lt;!&ndash;<span>1</span>&ndash;&gt;-->
+                            <!--<div flex>Data extraction</div>-->
+                            <!--<md-icon md-font-icon="icon-plus" ng-if="isGLPanel0Done"></md-icon>-->
+                            <!--<md-icon md-font-icon="icon-minus" ng-if="!isGLPanel0Done"></md-icon>-->
+                            <!--<i class="material-icons check-done-offset" ng-if="selectedDataSetting != ''">done</i>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body" ng-if="!isGLPanel0Done">-->
+                            <!--<div layout="row">-->
+                            <!--<div layout="row" class="panel-item" flex md-whiteframe="2dp" ng-click="selectDataSetting('fresh')">-->
+                            <!--<div class="selected" ng-if="selectedDataSetting == 'fresh'">-->
+                            <!--<md-icon md-font-icon="icon-check-circle"></md-icon>-->
+                            <!--</div>-->
+                            <!--<div layout="column" layout-align="center center" class="w-100">-->
+                            <!--<img src="assets/images/Setup guide/fresh_db.svg" alt="">-->
+                            <!--</div>-->
+                            <!--<div class="ml-10">-->
+                            <!--<h3>Fresh</h3>-->
+                            <!--<div>-->
+                            <!--This will delete all your existing data that may have created while you were in the trial period.-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div layout="row" class="panel-item" flex md-whiteframe="2dp" ng-click="selectDataSetting('migrate')">-->
+                            <!--<div class="selected" ng-if="selectedDataSetting == 'migrate'">-->
+                            <!--<md-icon md-font-icon="icon-check-circle"></md-icon>-->
+                            <!--</div>-->
+                            <!--<div layout="column" layout-align="center center" class="w-100">-->
+                            <!--<img src="assets/images/Setup guide/migrate_db.svg" alt="">-->
+                            <!--</div>-->
+                            <!--<div class="ml-10">-->
+                            <!--<h3>Migrate</h3>-->
+                            <!--<div>-->
+                            <!--This will migrate all your old data to the live database and will be accessible in the live mode.-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div layout="row" layout-align="end center">-->
+                            <!--<md-button class="md-accent" ng-disabled="selectedDataSetting == ''" ng-click="stepupGL()">next <md-icon md-font-icon="icon-chevron-down"></md-icon> </md-button>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="panel mt-5">-->
+                            <!--<div class="panel-header" layout="row" layout-align="space-between center">-->
+                            <!--&lt;!&ndash;<span>2</span>&ndash;&gt;-->
+                            <!--<div flex>Payment method</div>-->
+                            <!--<md-icon md-font-icon="icon-plus" ng-if="!isGLPanel0Done"></md-icon>-->
+                            <!--<md-icon md-font-icon="icon-minus" ng-if="isGLPanel0Done"></md-icon>-->
+                            <!--<i class="material-icons check-done-offset" ng-if="isLiveGatewaySelected">done</i>-->
+                            <!--</div>-->
+                            <!--<div class="panel-body p-16" ng-if="isGLPanel0Done">-->
+                            <!--<div flex>-->
+                            <!--<div class="mb-20">You must register with a preferred payment gateway in live mode in order to complete process.</div>-->
+                            <!--<ul>-->
+                            <!--<li>Go to <a href="#/settings">Settings</a> app.</li>-->
+                            <!--<li>Select <b>Payment gateways</b>.</li>-->
+                            <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div layout="row" layout-align="end center">-->
+                            <!--<md-button class="md-accent" ng-disabled="selectedDataSetting == ''" ng-click="stepDownGL()">previous <md-icon md-font-icon="icon-chevron-up"></md-icon> </md-button>-->
+                            <!--<md-button class="md-accent md-raised" ng-disabled="selectedDataSetting == ''" ng-click="stepupGL()">Go live</md-button>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <div class="vertical-panels">
+                                <div class="panel">
+                                    <!--<div class="panel-header" layout="row" layout-align="space-between center">-->
+                                    <!--&lt;!&ndash;<span>1</span>&ndash;&gt;-->
+                                    <!--<div flex>Data extraction</div>-->
+                                    <!--<md-icon md-font-icon="icon-plus" ng-if="isGLPanel0Done"></md-icon>-->
+                                    <!--<md-icon md-font-icon="icon-minus" ng-if="!isGLPanel0Done"></md-icon>-->
+                                    <!--</div>-->
+                                    <div class="panel-body">
+                                        <!--<div ng-if="extensionMode != 'live' && extensionMode != 'sandbox'">-->
+                                            <!--<div class="mt-20 mb-10 text-center">Please select an option below to setup the form of your data in live mode.</div>-->
+                                            <!--<div layout="row">-->
+                                                <!--<div layout="row" class="panel-item" flex md-whiteframe="2dp" ng-click="selectDataSetting('fresh')">-->
+                                                    <!--<div class="selected" ng-if="selectedDataSetting == 'fresh'">-->
+                                                        <!--<md-icon md-font-icon="icon-check-circle"></md-icon>-->
+                                                    <!--</div>-->
+                                                    <!--<div layout="column" layout-align="center center" class="w-100">-->
+                                                        <!--<img src="assets/images/Setup guide/fresh_db.svg" alt="">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="ml-10">-->
+                                                        <!--<h3>Fresh</h3>-->
+                                                        <!--<div>-->
+                                                            <!--This process  will clear all your test data and will create a new database.-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div layout="row" class="panel-item" flex md-whiteframe="2dp" ng-click="selectDataSetting('migrate')">-->
+                                                    <!--<div class="selected" ng-if="selectedDataSetting == 'migrate'">-->
+                                                        <!--<md-icon md-font-icon="icon-check-circle"></md-icon>-->
+                                                    <!--</div>-->
+                                                    <!--<div layout="column" layout-align="center center" class="w-100">-->
+                                                        <!--<img src="assets/images/Setup guide/migrate_db.svg" alt="">-->
+                                                    <!--</div>-->
+                                                    <!--<div class="ml-10">-->
+                                                        <!--<h3>Migrate</h3>-->
+                                                        <!--<div>-->
+                                                            <!--This process will migrate your existing test data to the live database.-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<div class="text-center">-->
+                                                <!--<span class="fw-500 font-accent"><md-icon md-font-icon="icon-information-outline" class="font-accent"></md-icon> IMPORTANT : </span>Once you press Go live, you will be <b>logged out</b> to start migrating process. Please log in again and go through the process accordingly.-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash;<div layout="row" ng-show="selectedDataSetting == 'migrate'">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div flex="50"></div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div flex="50" layout="column" class="ph-15">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div class="mv-10">Select which apps that you want to be migrated to the live mode</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;<div class="p-10 bg-gray">&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;<md-checkbox ng-click="selectAllToMigrate()" ng-model="selectAllApps" class="m-0 md-primary"> Select all</md-checkbox>&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;<md-divider></md-divider>&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div class="p-5 light-gray">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div ng-repeat="app in appsToMigrate" class="p-10">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<md-checkbox ng-model="app.migrateDBToLIve" class="m-0 md-primary"> {{app.name}}</md-checkbox>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--<div layout="row" layout-align="end center" class="ph-15">-->
+                                                <!--<md-progress-circular class="gen-save-indicator" ng-if="migrateInitilized"></md-progress-circular>-->
+                                                <!--<md-button class="md-accent md-raised" ng-disabled="migrateInitilized" ng-click="goLive()">Go live</md-button>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                        <div class="mt-50" layout="column" layout-align="center center">
+                                            <div>
+                                                <md-button layout="row" layout-align="start center" class="md-raised md-accent" ng-if="extensionMode == 'sandbox'" ng-click="initGoLive(event)">
+                                                    <i class="material-icons mr-10">language</i> GO LIVE
+                                                </md-button>
+                                                <md-button layout="row" layout-align="start center" class="md-raised md-accent" ng-if="extensionMode == 'ssandbox'" ng-click="initGoLive($event)">
+                                                    <i class="material-icons mr-10">language</i> SWITCH TO LIVE
+                                                </md-button>
+                                                <md-button layout="row" layout-align="start center" class="md-raised md-accent" ng-if="extensionMode == 'live' || extensionMode == 'pending'" ng-click="initGoLive($event)">
+                                                    <i class="material-icons mr-10">settings_backup_restore</i> GO BACK TO SANDBOX
+                                                </md-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="content-wrapper p-16" flex layout="column" layout-align="center center" ng-if="extensionMode == 'live'">-->
+            <!--<div class="text-center header-boss">-->
+                <!--<div class="header-icon-boss">-->
+                    <!--&lt;!&ndash;<i class="material-icons">explore</i>&ndash;&gt;-->
+                    <!--<img src="assets/images/backgrounds/cloudlock.png" alt="">-->
+                <!--</div>-->
+                <!--<div>Setup guide is only available in Sandbox mode</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!-- / CONTENT WRAPPER -->
+  </div>
+  <!-- / CONTENT CARD -->
+
+</div>
+
+
