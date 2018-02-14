@@ -4,8 +4,8 @@
   <div class="top-bg md-accent-bg"></div>
   <!-- / TOP BACKGROUND -->
 
-  <div class="center pos-rel ml-0 mr-0" layout="column" flex>
-      <!-- CONTENT HEADER- V NAV-->
+  <div class="center pos-rel ml-0 mr-0" layout="column" flex ng-class="{'center-offset':themeDuoworld}">
+       <!--CONTENT HEADER- V NAV-->
       <!--<div layout="column" layout-align="start start">-->
           <!--<div class="v-header" layout="row" flex fill-width>-->
               <!--<div class="title" layout="column" layout-align="center start">-->
@@ -35,9 +35,9 @@
           <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
       <!--</div>-->
-      <!-- / CONTENT HEADER -->
-    <!-- CONTENT CARD -->
-    <div class="content-card mt-45" layout="column" flex>
+       <!--/ CONTENT HEADER -->
+     <!--CONTENT CARD -->
+    <div class="content-card" layout="column" flex ng-class="{'mt-0':themeDuoworld, 'mt-45':!themeDuoworld}">
         <div class="content-wrapper" layout="column" flex ms-scroll id="guideScrollContent">
             <div>
                 <div class="pl-16 pr-16 pt-16 pb-60" style="background: #fafafa;z-index: 10" md-whiteframe="1dp">
