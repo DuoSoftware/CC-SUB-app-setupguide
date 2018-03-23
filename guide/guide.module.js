@@ -12,16 +12,16 @@
     'use strict';
 
     angular
-        .module('app.guide', [])
+        .module('app.setupguide', [])
         .config(config);
 
     /** @ngInject */
     function config($stateProvider, msNavigationServiceProvider, mesentitlementProvider)
     {
-        mesentitlementProvider.setStateCheck("guide");
+        mesentitlementProvider.setStateCheck("setupguide");
 
         $stateProvider
-            .state('app.guide', {
+            .state('app.setupguide', {
                 url    : '/guide',
                 views  : {
                     'guide@app': {
@@ -31,7 +31,7 @@
                 },
                 resolve: {
                    security: ['$q','mesentitlement', function($q,mesentitlement){
-                        var entitledStatesReturn = mesentitlement.stateDepResolver('guide');
+                        var entitledStatesReturn = mesentitlement.stateDepResolver('setupguide');
 
                         if(entitledStatesReturn !== true){
                               return $q.reject("unauthorized");
@@ -41,9 +41,9 @@
                 bodyClass: 'guide'
             });
 
-        msNavigationServiceProvider.saveItem('guide', {
+        msNavigationServiceProvider.saveItem('setupguide', {
             title    : 'Setup guide',
-            state    : 'app.guide',
+            state    : 'app.setupguide',
             weight   : 11
         });
     }

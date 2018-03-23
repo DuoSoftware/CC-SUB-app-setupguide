@@ -3,7 +3,7 @@
 	'use strict';
 
 	angular
-		.module('app.guide')
+		.module('app.setupguide')
 		.controller('GuideController',  GuideController);
 
 	/** @ngInject */
