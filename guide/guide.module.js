@@ -33,9 +33,9 @@
 					   mesentitlementProvider.setStateCheck("setupguide");
 					   var entitledStatesReturn = mesentitlement.stateDepResolver('setupguide');
 
-                        if(entitledStatesReturn !== true){
-                              return $q.reject("unauthorized");
-                        };
+                        // if(entitledStatesReturn !== true){
+                        //       return $q.reject("unauthorized");
+                        // };
                     }]
                 },
                 bodyClass: 'setupguide'
