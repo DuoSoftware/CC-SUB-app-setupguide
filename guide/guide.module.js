@@ -18,20 +18,20 @@
     /** @ngInject */
     function config($stateProvider, msNavigationServiceProvider, mesentitlementProvider)
     {
-        mesentitlementProvider.setStateCheck("guide");
 
         $stateProvider
             .state('app.setupguide', {
-                url    : '/guide',
+                url    : '/setupguide',
                 views  : {
-                    'guide@app': {
+                    'setupguide@app': {
                         templateUrl: 'app/main/guide/guide.html',
                         controller : 'GuideController as vm'
                     }
                 },
                 resolve: {
                    security: ['$q','mesentitlement', function($q,mesentitlement){
-                        var entitledStatesReturn = mesentitlement.stateDepResolver('setupguide');
+					   mesentitlementProvider.setStateCheck("setupguide");
+					   var entitledStatesReturn = mesentitlement.stateDepResolver('setupguide');
 
                         if(entitledStatesReturn !== true){
                               return $q.reject("unauthorized");
