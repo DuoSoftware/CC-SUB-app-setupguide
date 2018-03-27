@@ -22,9 +22,9 @@
 
         $stateProvider
             .state('app.setupguide', {
-                url    : '/guide',
+                url    : '/setupguide',
                 views  : {
-                    'guide@app': {
+                    'setupguide@app': {
                         templateUrl: 'app/main/guide/guide.html',
                         controller : 'GuideController as vm'
                     }
@@ -38,7 +38,7 @@
                         };
                     }]
                 },
-                bodyClass: 'guide'
+                bodyClass: 'setupguide'
             });
 
         msNavigationServiceProvider.saveItem('setupguide', {
